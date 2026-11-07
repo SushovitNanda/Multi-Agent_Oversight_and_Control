@@ -1,0 +1,3 @@
+level,views,n_offlog_with_transfer,recall,recall_lo,recall_hi,lag_rounds_mean,n_honest,honest_episode_fpr,honest_fpr_hi,honest_false_pairs
+exact,"peer,gateway,inference",9,0.333,0.333,0.333,4.0,9,0.0,0.0,0
+decode,"peer,gateway,inference",9,0.333,0.333,0.333,4.0,9,0.0,0.0,0

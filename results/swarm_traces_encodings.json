@@ -1,0 +1,255 @@
+{
+ "rows": 189579,
+ "kinds": {
+  "payload": 91037,
+  "response": 23008,
+  "recovered_text": 75534
+ },
+ "top_tags": [
+  [
+   "article-evidence;appendix-request",
+   3
+  ],
+  [
+   "article-evidence;g236-command;g23619cmd.bin;command-000007",
+   2
+  ],
+  [
+   "article-evidence;g236-command;g23619cmd.bin;command-000001",
+   1
+  ],
+  [
+   "article-evidence;g236-command;g23619cmd.bin;command-000002",
+   1
+  ],
+  [
+   "article-evidence;g236-command;g23619cmd.bin;command-000003",
+   1
+  ],
+  [
+   "article-evidence;g236-command;g23619cmd.bin;command-000004",
+   1
+  ],
+  [
+   "article-evidence;g236-command;g23619cmd.bin;command-000005",
+   1
+  ],
+  [
+   "article-evidence;g236-command;g23619cmd.bin;command-000006",
+   1
+  ],
+  [
+   "article-evidence;g236-command;g23619cmd.bin;command-000008",
+   1
+  ],
+  [
+   "article-evidence;g236-command;g23619cmd.bin;command-000009",
+   1
+  ],
+  [
+   "article-evidence;g236-command;g23619cmd.bin;command-000010",
+   1
+  ],
+  [
+   "article-evidence;g236-command;g23619cmd.bin;command-000011",
+   1
+  ],
+  [
+   "article-evidence;g236-command;g23619cmd.bin;command-000012",
+   1
+  ],
+  [
+   "article-evidence;g236-command;g23619cmd.bin;command-000013",
+   1
+  ],
+  [
+   "article-evidence;g236-command;g23619cmd.bin;command-000014",
+   1
+  ],
+  [
+   "article-evidence;g236-command;g23619cmd.bin;command-000015",
+   1
+  ],
+  [
+   "article-evidence;g236-command;g23619cmd.bin;command-000016",
+   1
+  ],
+  [
+   "article-evidence;g236-command;g23619cmd.bin;command-000017",
+   1
+  ],
+  [
+   "article-evidence;g236-command;g23619scmd.bin;command-000001",
+   1
+  ],
+  [
+   "article-evidence;g236-command;g23619scmd.bin;command-000002",
+   1
+  ],
+  [
+   "article-evidence;g236-command;g23619scmd.bin;command-000003",
+   1
+  ],
+  [
+   "article-evidence;g236-command;g23619scmd.bin;command-000004",
+   1
+  ],
+  [
+   "article-evidence;g236-command;g23619scmd.bin;command-000005",
+   1
+  ],
+  [
+   "article-evidence;g236-command;g23619scmd.bin;command-000006",
+   1
+  ],
+  [
+   "article-evidence;g236-command;g23619scmd.bin;command-000007",
+   1
+  ]
+ ],
+ "pattern_rows": {
+  "atob_or_b64decode": 10654,
+  "rot13_or_charcode": 4047,
+  "dir_name_message": 2269,
+  "gzip_or_zlib": 10129,
+  "base64_blob_32+": 522,
+  "reverse_call": 175,
+  "eval_or_exec": 11168,
+  "url_encoded": 589,
+  "hex_blob_32+": 55,
+  "hex_escape_seq": 51,
+  "unicode_escape_seq": 1
+ },
+ "pattern_rate": {
+  "atob_or_b64decode": 0.0562,
+  "rot13_or_charcode": 0.0213,
+  "dir_name_message": 0.012,
+  "gzip_or_zlib": 0.0534,
+  "base64_blob_32+": 0.0028,
+  "reverse_call": 0.0009,
+  "eval_or_exec": 0.0589,
+  "url_encoded": 0.0031,
+  "hex_blob_32+": 0.0003,
+  "hex_escape_seq": 0.0003,
+  "unicode_escape_seq": 0.0
+ },
+ "top_combinations": [
+  {
+   "patterns": [
+    "atob_or_b64decode",
+    "eval_or_exec"
+   ],
+   "rows": 2102
+  },
+  {
+   "patterns": [
+    "eval_or_exec",
+    "gzip_or_zlib"
+   ],
+   "rows": 2067
+  },
+  {
+   "patterns": [
+    "atob_or_b64decode",
+    "eval_or_exec",
+    "gzip_or_zlib"
+   ],
+   "rows": 1951
+  },
+  {
+   "patterns": [
+    "atob_or_b64decode",
+    "rot13_or_charcode"
+   ],
+   "rows": 907
+  },
+  {
+   "patterns": [
+    "atob_or_b64decode",
+    "gzip_or_zlib",
+    "rot13_or_charcode"
+   ],
+   "rows": 851
+  },
+  {
+   "patterns": [
+    "atob_or_b64decode",
+    "gzip_or_zlib"
+   ],
+   "rows": 799
+  },
+  {
+   "patterns": [
+    "atob_or_b64decode",
+    "eval_or_exec",
+    "gzip_or_zlib",
+    "rot13_or_charcode"
+   ],
+   "rows": 457
+  },
+  {
+   "patterns": [
+    "dir_name_message",
+    "gzip_or_zlib"
+   ],
+   "rows": 248
+  },
+  {
+   "patterns": [
+    "gzip_or_zlib",
+    "rot13_or_charcode"
+   ],
+   "rows": 185
+  },
+  {
+   "patterns": [
+    "atob_or_b64decode",
+    "dir_name_message",
+    "eval_or_exec",
+    "gzip_or_zlib"
+   ],
+   "rows": 151
+  },
+  {
+   "patterns": [
+    "dir_name_message",
+    "eval_or_exec",
+    "gzip_or_zlib"
+   ],
+   "rows": 106
+  },
+  {
+   "patterns": [
+    "atob_or_b64decode",
+    "dir_name_message",
+    "gzip_or_zlib"
+   ],
+   "rows": 88
+  },
+  {
+   "patterns": [
+    "atob_or_b64decode",
+    "dir_name_message",
+    "eval_or_exec"
+   ],
+   "rows": 84
+  },
+  {
+   "patterns": [
+    "atob_or_b64decode",
+    "gzip_or_zlib",
+    "reverse_call",
+    "rot13_or_charcode"
+   ],
+   "rows": 58
+  },
+  {
+   "patterns": [
+    "atob_or_b64decode",
+    "eval_or_exec",
+    "reverse_call"
+   ],
+   "rows": 51
+  }
+ ]
+}

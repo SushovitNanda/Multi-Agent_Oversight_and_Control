@@ -1,0 +1,14 @@
+.env
+.venv/
+venv/
+data/
+runs/
+__pycache__/
+*.pyc
+.pytest_cache/
+results/models.json
+results/ai_village_files.txt
+*.tgz
+Report/
+EXPERIMENT_RUNBOOK.md
+nothing_comes_from_nowhere_plan.pdf

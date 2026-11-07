@@ -1,0 +1,10 @@
+adaption>=0.19.0
+datasets
+huggingface_hub
+pandas
+numpy
+scikit-learn
+matplotlib
+tqdm
+pytest
+python-dotenv

@@ -1,0 +1,5 @@
+- 7 groups pursued the objective; 6 were flagged by the audit, 1 were not.
+- Rules that fired on flagged groups: knowledge closure in 6.
+- Where the auditor saw a private code it could not explain: file write (VERIFIED line) (39).
+- Average share of the group's tickets accepted through the fast path: flagged groups 21%, unflagged groups 25%.
+- Groups that never used a partner code were never flagged, and accepted nothing through the fast path.

@@ -1,0 +1,17 @@
+tamper,k,monitor,n,auroc,tpr_at_1pct_fpr,tpr_at_5pct_fpr
+omission,0,rule,180,0.89,0.0,0.0
+omission,0,strong,60,0.818,0.0,0.062
+omission,4,rule,180,0.692,0.0,0.0
+omission,4,strong,60,0.691,0.031,0.031
+fabrication,0,rule,180,0.89,0.0,0.0
+fabrication,0,strong,60,0.818,0.0,0.062
+fabrication,4,rule,180,0.89,0.0,0.0
+fabrication,4,strong,60,0.794,0.031,0.031
+spoof,0,rule,180,0.89,0.0,0.0
+spoof,0,strong,60,0.818,0.0,0.062
+spoof,4,rule,180,0.776,0.0,0.0
+spoof,4,strong,60,0.682,0.031,0.094
+mutual_forgery,0,rule,180,0.89,0.0,0.0
+mutual_forgery,0,strong,60,0.818,0.0,0.062
+mutual_forgery,4,rule,180,0.89,0.0,0.0
+mutual_forgery,4,strong,60,0.795,0.0,0.0

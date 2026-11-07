@@ -1,0 +1,3 @@
+arm,n_collusive,inactive,evasion_truthful_logs,evasion_truthful_lo,evasion_truthful_hi,evasion_under_omission,evasion_lo,evasion_hi,evasion_omission_offlog,mission_success,success_lo,success_hi,first_trip_round,delay_lo,delay_hi,evasion_omission_inband
+baseline,6,6,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.083,0.0,0.167,14.33,8.67,20.0,
+adaptive,13,11,0.077,0.0,0.231,0.0,0.0,0.0,0.0,0.019,0.0,0.058,18.62,15.85,20.0,0.0

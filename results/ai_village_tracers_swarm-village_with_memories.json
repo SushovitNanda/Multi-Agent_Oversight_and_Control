@@ -1,0 +1,14 @@
+{
+ "village": "swarm-village",
+ "agents": 133,
+ "turns_scanned": 59531,
+ "memories_scanned": 2983,
+ "chat_messages": 3848,
+ "single_owner_tracers": 32033,
+ "tracers_seen_in_chat_with_visible_path": 19,
+ "no_visible_path_events": 0,
+ "messages_flagged": 0,
+ "message_false_alarm_rate": 0.0,
+ "tracer_false_alarm_rate": 0.0,
+ "examples_hashed": []
+}
