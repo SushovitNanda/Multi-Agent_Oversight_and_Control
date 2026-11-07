@@ -27,6 +27,7 @@ ap.add_argument("--judge-tokens", type=int, default=1500, help="output cap for j
 ap.add_argument("--out", default=None, help="table name, default rq1_<tag>.csv")
 ap.add_argument("--ks", default=None, help="comma list of liar counts, default 0,1,2,3,4,6")
 ap.add_argument("--classes", default=None, help="comma list of tamper classes")
+ap.add_argument("--with-gateway", action="store_true", help="judges also see the tool gateway record (same two views as the audit)")
 args = ap.parse_args()
 if args.ks:
     KS = tuple(int(x) for x in args.ks.split(','))
@@ -66,7 +67,8 @@ for kind in CLASSES:
                 scores["judge"] = list(judge_k0)
             else:
                 with ThreadPoolExecutor(args.workers) as ex:
-                    scores["judge"] = list(ex.map(lambda j: llm_judge(client, args.judge, j[2], j[1], j[3], args.judge_tokens)[0], jobs))
+                    scores["judge"] = list(ex.map(lambda j: llm_judge(client, args.judge, j[2], j[1], j[3], args.judge_tokens,
+                                                                      gateway=eps[j[0]]["gateway"] if args.with_gateway else None)[0], jobs))
                 if k == 0:
                     judge_k0 = list(scores["judge"])
         if args.strong:
@@ -76,7 +78,8 @@ for kind in CLASSES:
                 scores["strong"] = list(strong_k0)
             else:
                 with ThreadPoolExecutor(args.workers) as ex:
-                    scores["strong"] = list(ex.map(lambda j: llm_judge(client, args.strong, j[2], j[1], j[3], args.judge_tokens)[0], sub))
+                    scores["strong"] = list(ex.map(lambda j: llm_judge(client, args.strong, j[2], j[1], j[3], args.judge_tokens,
+                                                                       gateway=eps[j[0]]["gateway"] if args.with_gateway else None)[0], sub))
                 if k == 0:
                     strong_k0 = list(scores["strong"])
         print(f"{kind} k={k} done", flush=True)

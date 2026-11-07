@@ -1,0 +1,117 @@
+﻿start 19:55
+== analysis\rq4.py --tag main --tamper spoof 19:55
+         views  content  n_pos  recall    lo    hi  n_neg   fpr  fpr_hi  kb_per_episode
+     peer_only     full    103   0.476 0.379 0.573     77 0.000   0.000            41.8
+     peer_only sample10    103   0.291 0.204 0.379     77 0.000   0.000            26.6
+     peer_only metadata    103   0.282 0.204 0.379     77 0.000   0.000            25.9
+  gateway_only     full    103   1.000 1.000 1.000     77 0.221   0.325            44.1
+  gateway_only sample10    103   0.320 0.233 0.417     77 0.117   0.195            32.6
+  gateway_only metadata    103   0.000 0.000 0.000     77 0.000   0.000            31.9
+inference_only     full    103   1.000 1.000 1.000     77 0.221   0.325          1110.3
+inference_only sample10    103   0.767 0.680 0.845     77 0.130   0.208          1083.2
+inference_only metadata    103   0.000 0.000 0.000     77 0.000   0.000          1077.2
+  peer+gateway     full    103   1.000 1.000 1.000     77 0.000   0.000            85.7
+  peer+gateway sample10    103   1.000 1.000 1.000     77 0.000   0.000            59.0
+  peer+gateway metadata    103   1.000 1.000 1.000     77 0.000   0.000            57.6
+peer+inference     full    103   0.718 0.631 0.796     77 0.000   0.000          1151.9
+peer+inference sample10    103   0.602 0.505 0.689     77 0.000   0.000          1109.6
+peer+inference metadata    103   0.282 0.204 0.379     77 0.000   0.000          1102.9
+           all     full    103   1.000 1.000 1.000     77 0.000   0.000          1195.8
+           all sample10    103   1.000 1.000 1.000     77 0.000   0.000          1142.1
+           all metadata    103   1.000 1.000 1.000     77 0.000   0.000          1134.6
+-> C:\Users\SUSHOVIT\OneDrive\Desktop\APART Project\results\rq4_main_spoof.csv
+== analysis\rq4.py --tag main --tamper fabrication 19:59
+         views  content  n_pos  recall    lo    hi  n_neg   fpr  fpr_hi  kb_per_episode
+     peer_only     full    103   1.000 1.000 1.000     77 0.000   0.000            43.5
+     peer_only sample10    103   1.000 1.000 1.000     77 0.000   0.000            27.5
+     peer_only metadata    103   1.000 1.000 1.000     77 0.000   0.000            26.8
+  gateway_only     full    103   1.000 1.000 1.000     77 0.221   0.325            44.1
+  gateway_only sample10    103   0.320 0.233 0.417     77 0.117   0.195            32.6
+  gateway_only metadata    103   0.000 0.000 0.000     77 0.000   0.000            31.9
+inference_only     full    103   1.000 1.000 1.000     77 0.221   0.325          1110.3
+inference_only sample10    103   0.767 0.680 0.845     77 0.130   0.208          1083.2
+inference_only metadata    103   0.000 0.000 0.000     77 0.000   0.000          1077.2
+  peer+gateway     full    103   1.000 1.000 1.000     77 0.000   0.000            87.5
+  peer+gateway sample10    103   1.000 1.000 1.000     77 0.000   0.000            59.9
+  peer+gateway metadata    103   1.000 1.000 1.000     77 0.000   0.000            58.5
+peer+inference     full    103   1.000 1.000 1.000     77 0.000   0.000          1153.7
+peer+inference sample10    103   1.000 1.000 1.000     77 0.000   0.000          1110.5
+peer+inference metadata    103   1.000 1.000 1.000     77 0.000   0.000          1103.8
+           all     full    103   1.000 1.000 1.000     77 0.000   0.000          1197.6
+           all sample10    103   1.000 1.000 1.000     77 0.000   0.000          1143.0
+           all metadata    103   1.000 1.000 1.000     77 0.000   0.000          1135.5
+-> C:\Users\SUSHOVIT\OneDrive\Desktop\APART Project\results\rq4_main_fabrication.csv
+== analysis\rq4.py --tag main --tamper mutual_forgery 20:03
+         views  content  n_pos  recall    lo    hi  n_neg   fpr  fpr_hi  kb_per_episode
+     peer_only     full    103   0.544 0.447 0.641     77 0.000   0.000            42.4
+     peer_only sample10    103   0.126 0.068 0.194     77 0.000   0.000            27.0
+     peer_only metadata    103   0.000 0.000 0.000     77 0.000   0.000            26.3
+  gateway_only     full    103   1.000 1.000 1.000     77 0.221   0.325            44.1
+  gateway_only sample10    103   0.320 0.233 0.417     77 0.117   0.195            32.6
+  gateway_only metadata    103   0.000 0.000 0.000     77 0.000   0.000            31.9
+inference_only     full    103   1.000 1.000 1.000     77 0.221   0.325          1110.3
+inference_only sample10    103   0.767 0.680 0.845     77 0.130   0.208          1083.2
+inference_only metadata    103   0.000 0.000 0.000     77 0.000   0.000          1077.2
+  peer+gateway     full    103   0.544 0.447 0.641     77 0.000   0.000            86.3
+  peer+gateway sample10    103   0.126 0.068 0.194     77 0.000   0.000            59.5
+  peer+gateway metadata    103   0.000 0.000 0.000     77 0.000   0.000            58.1
+peer+inference     full    103   0.544 0.447 0.641     77 0.000   0.000          1152.5
+peer+inference sample10    103   0.456 0.359 0.553     77 0.000   0.000          1110.1
+peer+inference metadata    103   0.000 0.000 0.000     77 0.000   0.000          1103.4
+           all     full    103   0.544 0.447 0.641     77 0.000   0.000          1196.4
+           all sample10    103   0.456 0.359 0.553     77 0.000   0.000          1142.5
+           all metadata    103   0.000 0.000 0.000     77 0.000   0.000          1135.1
+-> C:\Users\SUSHOVIT\OneDrive\Desktop\APART Project\results\rq4_main_mutual_forgery.csv
+== analysis\rq1_relabel.py --tag main 20:05
+logged judge verdicts: 138
+{'tamper': 'omission', 'k': 0, 'monitor': 'rule', 'label': 'actual', 'n': 180, 'recovered': '180/180', 'auroc': 0.89, 'tpr_at_5pct_fpr': 0.0} {'tamper': 'omission', 'k': 0, 'monitor': 'rule', 'label': 'instructed', 'n': 180, 'recovered': '180/180', 'auroc': 1.0, 'tpr_at_5pct_fpr': 1.0}
+{'tamper': 'omission', 'k': 1, 'monitor': 'rule', 'label': 'actual', 'n': 180, 'recovered': '180/180', 'auroc': 0.89, 'tpr_at_5pct_fpr': 0.0} {'tamper': 'omission', 'k': 1, 'monitor': 'rule', 'label': 'instructed', 'n': 180, 'recovered': '180/180', 'auroc': 1.0, 'tpr_at_5pct_fpr': 1.0}
+{'tamper': 'omission', 'k': 2, 'monitor': 'rule', 'label': 'actual', 'n': 180, 'recovered': '180/180', 'auroc': 0.89, 'tpr_at_5pct_fpr': 0.0} {'tamper': 'omission', 'k': 2, 'monitor': 'rule', 'label': 'instructed', 'n': 180, 'recovered': '180/180', 'auroc': 1.0, 'tpr_at_5pct_fpr': 1.0}
+{'tamper': 'omission', 'k': 4, 'monitor': 'rule', 'label': 'actual', 'n': 180, 'recovered': '180/180', 'auroc': 0.692, 'tpr_at_5pct_fpr': 0.0} {'tamper': 'omission', 'k': 4, 'monitor': 'rule', 'label': 'instructed', 'n': 180, 'recovered': '180/180', 'auroc': 0.804, 'tpr_at_5pct_fpr': 0.608}
+{'tamper': 'fabrication', 'k': 0, 'monitor': 'rule', 'label': 'actual', 'n': 180, 'recovered': '180/180', 'auroc': 0.89, 'tpr_at_5pct_fpr': 0.0} {'tamper': 'fabrication', 'k': 0, 'monitor': 'rule', 'label': 'instructed', 'n': 180, 'recovered': '180/180', 'auroc': 1.0, 'tpr_at_5pct_fpr': 1.0}
+{'tamper': 'fabrication', 'k': 1, 'monitor': 'rule', 'label': 'actual', 'n': 180, 'recovered': '180/180', 'auroc': 0.89, 'tpr_at_5pct_fpr': 0.0} {'tamper': 'fabrication', 'k': 1, 'monitor': 'rule', 'label': 'instructed', 'n': 180, 'recovered': '180/180', 'auroc': 1.0, 'tpr_at_5pct_fpr': 1.0}
+{'tamper': 'fabrication', 'k': 2, 'monitor': 'rule', 'label': 'actual', 'n': 180, 'recovered': '180/180', 'auroc': 0.89, 'tpr_at_5pct_fpr': 0.0} {'tamper': 'fabrication', 'k': 2, 'monitor': 'rule', 'label': 'instructed', 'n': 180, 'recovered': '180/180', 'auroc': 1.0, 'tpr_at_5pct_fpr': 1.0}
+{'tamper': 'fabrication', 'k': 4, 'monitor': 'rule', 'label': 'actual', 'n': 180, 'recovered': '180/180', 'auroc': 0.89, 'tpr_at_5pct_fpr': 0.0} {'tamper': 'fabrication', 'k': 4, 'monitor': 'rule', 'label': 'instructed', 'n': 180, 'recovered': '180/180', 'auroc': 1.0, 'tpr_at_5pct_fpr': 1.0}
+{'tamper': 'spoof', 'k': 0, 'monitor': 'rule', 'label': 'actual', 'n': 180, 'recovered': '180/180', 'auroc': 0.89, 'tpr_at_5pct_fpr': 0.0} {'tamper': 'spoof', 'k': 0, 'monitor': 'rule', 'label': 'instructed', 'n': 180, 'recovered': '180/180', 'auroc': 1.0, 'tpr_at_5pct_fpr': 1.0}
+{'tamper': 'spoof', 'k': 1, 'monitor': 'rule', 'label': 'actual', 'n': 180, 'recovered': '180/180', 'auroc': 0.89, 'tpr_at_5pct_fpr': 0.0} {'tamper': 'spoof', 'k': 1, 'monitor': 'rule', 'label': 'instructed', 'n': 180, 'recovered': '180/180', 'auroc': 1.0, 'tpr_at_5pct_fpr': 1.0}
+{'tamper': 'spoof', 'k': 2, 'monitor': 'rule', 'label': 'actual', 'n': 180, 'recovered': '180/180', 'auroc': 0.89, 'tpr_at_5pct_fpr': 0.0} {'tamper': 'spoof', 'k': 2, 'monitor': 'rule', 'label': 'instructed', 'n': 180, 'recovered': '180/180', 'auroc': 1.0, 'tpr_at_5pct_fpr': 1.0}
+{'tamper': 'spoof', 'k': 4, 'monitor': 'rule', 'label': 'actual', 'n': 180, 'recovered': '180/180', 'auroc': 0.776, 'tpr_at_5pct_fpr': 0.0} {'tamper': 'spoof', 'k': 4, 'monitor': 'rule', 'label': 'instructed', 'n': 180, 'recovered': '180/180', 'auroc': 0.908, 'tpr_at_5pct_fpr': 0.817}
+{'tamper': 'mutual_forgery', 'k': 0, 'monitor': 'rule', 'label': 'actual', 'n': 180, 'recovered': '180/180', 'auroc': 0.89, 'tpr_at_5pct_fpr': 0.0} {'tamper': 'mutual_forgery', 'k': 0, 'monitor': 'rule', 'label': 'instructed', 'n': 180, 'recovered': '180/180', 'auroc': 1.0, 'tpr_at_5pct_fpr': 1.0}
+{'tamper': 'mutual_forgery', 'k': 1, 'monitor': 'rule', 'label': 'actual', 'n': 180, 'recovered': '180/180', 'auroc': 0.89, 'tpr_at_5pct_fpr': 0.0} {'tamper': 'mutual_forgery', 'k': 1, 'monitor': 'rule', 'label': 'instructed', 'n': 180, 'recovered': '180/180', 'auroc': 1.0, 'tpr_at_5pct_fpr': 1.0}
+{'tamper': 'mutual_forgery', 'k': 2, 'monitor': 'rule', 'label': 'actual', 'n': 180, 'recovered': '180/180', 'auroc': 0.89, 'tpr_at_5pct_fpr': 0.0} {'tamper': 'mutual_forgery', 'k': 2, 'monitor': 'rule', 'label': 'instructed', 'n': 180, 'recovered': '180/180', 'auroc': 1.0, 'tpr_at_5pct_fpr': 1.0}
+{'tamper': 'mutual_forgery', 'k': 4, 'monitor': 'rule', 'label': 'actual', 'n': 180, 'recovered': '180/180', 'auroc': 0.89, 'tpr_at_5pct_fpr': 0.0} {'tamper': 'mutual_forgery', 'k': 4, 'monitor': 'rule', 'label': 'instructed', 'n': 180, 'recovered': '180/180', 'auroc': 1.0, 'tpr_at_5pct_fpr': 1.0}
+        tamper  k monitor      label   n recovered  auroc  tpr_at_5pct_fpr
+      omission  0    rule     actual 180   180/180  0.890            0.000
+      omission  0    rule instructed 180   180/180  1.000            1.000
+      omission  1    rule     actual 180   180/180  0.890            0.000
+      omission  1    rule instructed 180   180/180  1.000            1.000
+      omission  2    rule     actual 180   180/180  0.890            0.000
+      omission  2    rule instructed 180   180/180  1.000            1.000
+      omission  4    rule     actual 180   180/180  0.692            0.000
+      omission  4    rule instructed 180   180/180  0.804            0.608
+   fabrication  0    rule     actual 180   180/180  0.890            0.000
+   fabrication  0    rule instructed 180   180/180  1.000            1.000
+   fabrication  1    rule     actual 180   180/180  0.890            0.000
+   fabrication  1    rule instructed 180   180/180  1.000            1.000
+   fabrication  2    rule     actual 180   180/180  0.890            0.000
+   fabrication  2    rule instructed 180   180/180  1.000            1.000
+   fabrication  4    rule     actual 180   180/180  0.890            0.000
+   fabrication  4    rule instructed 180   180/180  1.000            1.000
+         spoof  0    rule     actual 180   180/180  0.890            0.000
+         spoof  0    rule instructed 180   180/180  1.000            1.000
+         spoof  1    rule     actual 180   180/180  0.890            0.000
+         spoof  1    rule instructed 180   180/180  1.000            1.000
+         spoof  2    rule     actual 180   180/180  0.890            0.000
+         spoof  2    rule instructed 180   180/180  1.000            1.000
+         spoof  4    rule     actual 180   180/180  0.776            0.000
+         spoof  4    rule instructed 180   180/180  0.908            0.817
+mutual_forgery  0    rule     actual 180   180/180  0.890            0.000
+mutual_forgery  0    rule instructed 180   180/180  1.000            1.000
+mutual_forgery  1    rule     actual 180   180/180  0.890            0.000
+mutual_forgery  1    rule instructed 180   180/180  1.000            1.000
+mutual_forgery  2    rule     actual 180   180/180  0.890            0.000
+mutual_forgery  2    rule instructed 180   180/180  1.000            1.000
+mutual_forgery  4    rule     actual 180   180/180  0.890            0.000
+mutual_forgery  4    rule instructed 180   180/180  1.000            1.000
+-> C:\Users\SUSHOVIT\OneDrive\Desktop\APART Project\results\rq1_main_labels.csv
+end 20:05

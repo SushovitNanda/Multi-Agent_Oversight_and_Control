@@ -17,6 +17,7 @@ from tamper.tamper import apply, choose_liars  # noqa: E402
 ap = argparse.ArgumentParser()
 ap.add_argument("--tag", default="main")
 ap.add_argument("--k", type=int, default=4)
+ap.add_argument("--tamper", default="omission", help="tamper class applied to positive episodes")
 args = ap.parse_args()
 eps = load_all(args.tag)
 
@@ -64,7 +65,7 @@ for name, views in CONFIGS:
         for i, ep in enumerate(eps):
             rng = random.Random(i)
             liars = choose_liars(ep["meta"], args.k, rng)
-            tampered = apply(ep["peer"], ep["meta"], liars, "omission", rng) if ep["label"]["positive"] else ep["peer"]
+            tampered = apply(ep["peer"], ep["meta"], liars, args.tamper, rng) if ep["label"]["positive"] else ep["peer"]
             peer = {a: strip_content(v, content, rng) for a, v in tampered.items()} if "peer" in views else {a: [] for a in tampered}
             gw = strip_content(ep["gateway"], content, rng) if "gateway" in views else None
             inf = strip_content(ep["inference"], content, rng) if "inference" in views else None
@@ -86,4 +87,4 @@ for name, views in CONFIGS:
         rows.append({"views": name, "content": content, "n_pos": len(det), "recall": round(m, 3), "lo": round(lo, 3),
                      "hi": round(hi, 3), "n_neg": len(fp), "fpr": round(f, 3), "fpr_hi": round(fhi, 3),
                      "kb_per_episode": round(sum(size) / max(1, len(size)) / 1024, 1)})
-save_table(rows, f"rq4_{args.tag}.csv")
+save_table(rows, f"rq4_{args.tag}.csv" if args.tamper == "omission" else f"rq4_{args.tag}_{args.tamper}.csv")

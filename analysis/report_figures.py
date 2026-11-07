@@ -47,7 +47,11 @@ def load(name):
     if not p.exists():
         print("missing", name)
         return None
-    return pd.read_csv(p)
+    try:
+        return pd.read_csv(p)
+    except pd.errors.EmptyDataError:
+        print("empty", name)
+        return None
 
 
 def rows(name, lines):
@@ -216,7 +220,7 @@ if rq0 is not None:
     tag_order = {"main": 0, "cond": 1, "stegooff": 2, "gemma": 3, "qwen": 4, "gemma26": 5}
     rq0 = rq0.assign(o=rq0.condition.map(order)).sort_values(["tag", "o"], key=lambda s: s.map(tag_order) if s.name == "tag" else s)
     lines, keep_lines = [], []
-    keep = {("main", "honest"), ("cond", "gossip"), ("main", "inband"), ("main", "offlog"), ("gemma", "honest"), ("gemma", "offlog"), ("qwen", "offlog")}
+    keep = {("main", "honest"), ("cond", "gossip"), ("main", "inband"), ("main", "offlog"), ("gemma", "offlog"), ("qwen", "offlog")}
     census_model = {"cond": "deepseek-v4-flash", "stegooff": "deepseek-v4-flash"}
     for _, r in rq0.iterrows():
         alerts = int(round(r.alert_full * r.n))
@@ -319,7 +323,7 @@ if lines:
     rows("tab_tracers", lines)
     short = []
     for tag, name in (("main", "deepseek"), ("stegooff", "deepseek, encoded"), ("long40", "deepseek, 40 rounds"),
-                      ("gemma", "gemma-31b"), ("qwen", "qwen-27b")):
+                      ("gemma", "gemma-31b"), ("gemma26", "gemma-26b"), ("qwen", "qwen-27b")):
         d = load(f"rq3_{tag}.csv")
         if d is None:
             continue
@@ -379,7 +383,7 @@ v = load("rq4_main.csv")
 if v is not None:
     order = ["peer_only", "gateway_only", "inference_only", "peer+gateway", "peer+inference", "all"]
     labels = ["peer\nonly", "tool gw\nonly", "inference\nonly", "peer +\ntool gw", "peer +\ninference", "all three"]
-    fig, axes = plt.subplots(1, 2, figsize=(6.0, 2.6))
+    fig, axes = plt.subplots(1, 2, figsize=(8.6, 2.7))
     w = 0.26
     for ax, col, title in zip(axes, ("recall", "fpr"), ("recall (4 liars, omission)", "false-alarm rate on truthful logs")):
         for i, (content, lab) in enumerate((("full", "full content"), ("sample10", "10% content sample"), ("metadata", "metadata only"))):
@@ -390,8 +394,8 @@ if v is not None:
             else:
                 ax.bar(x, g.fpr, w, yerr=[0 * g.fpr, g.fpr_hi - g.fpr], capsize=1.5, label=lab, color=["#2A6F97", "#61A5C2", "#A9D6E5"][i])
         ax.set_xticks(np.arange(len(order)))
-        ax.set_xticklabels(labels, fontsize=6.5)
-        ax.set_title(title, fontsize=8.5)
+        ax.set_xticklabels(labels, fontsize=8)
+        ax.set_title(title, fontsize=9.5)
         ax.set_ylim(0, 1.05)
         ax.grid(axis="y", alpha=0.3)
     axes[0].legend(loc="upper left", fontsize=6.5)
@@ -411,6 +415,34 @@ if v is not None:
         r = v[(v.views == name) & (v.content == content)].iloc[0]
         lines.append(" & ".join([lab, f"{r.recall:.2f}", f"{int(round(r.fpr * r.n_neg))}/{int(r.n_neg)}", f"{r.kb_per_episode:.0f}"]) + r" \\")
     rows("tab_views_main", lines)
+    # the same ablation under the other tamper classes (offline re-runs)
+    lines = []
+    for kind in ("omission", "spoof", "fabrication", "mutual_forgery"):
+        d = v if kind == "omission" else load(f"rq4_main_{kind}.csv")
+        if d is None:
+            continue
+        for name, lab in zip(order, ["peer only", "tool gateway only", "inference only", "peer + tool gw", "peer + inference", "all three"]):
+            cells = [NICE[kind], lab]
+            for content in ("full", "metadata"):
+                r = d[(d.views == name) & (d.content == content)].iloc[0]
+                cells.append(f"{r.recall:.2f}")
+                cells.append(f"{int(round(r.fpr * r.n_neg))}/{int(r.n_neg)}")
+            lines.append(" & ".join(cells) + r" \\")
+    rows("tab_views_tamper", lines)
+
+# ---------------------------------------------------------------- RQ2 extras: judge with gateway view, instructed labels
+jg = load("rq1_main_judge_gateway.csv")
+lines = []
+if jg is not None:
+    for _, r in jg[jg.monitor == "strong"].iterrows():
+        lines.append(" & ".join([NICE.get(r.tamper, r.tamper), str(int(r.k)), str(int(r.n)), f"{r.auroc:.2f}", f"{r.tpr_at_5pct_fpr:.2f}"]) + r" \\")
+    rows("tab_judge_gateway", lines)
+lb = load("rq1_main_labels.csv")
+if lb is not None:
+    lines = []
+    for _, r in lb.iterrows():
+        lines.append(" & ".join([NICE.get(r.tamper, r.tamper), str(int(r.k)), r.monitor, r.label, str(int(r.n)), f"{r.auroc:.2f}", f"{r.tpr_at_5pct_fpr:.2f}"]) + r" \\")
+    rows("tab_monitor_labels", lines)
 
 # ---------------------------------------------------------------- scale
 sc = load("scale.csv")
@@ -469,15 +501,15 @@ g5c = load("rq5_vs_control.csv")
 if g5 is not None and "evasion_truthful_logs" in g5:
     arms = list(g5.arm)
     lab = {"baseline": "uninformed", "adaptive": "told rules\n(gen 0)", "gen1": "gen 1\n(outcomes)", "gen2": "gen 2\n(outcomes)"}
-    fig, axes = plt.subplots(1, 3, figsize=(6.2, 2.3))
+    fig, axes = plt.subplots(1, 3, figsize=(8.8, 2.6))
     for ax, (col, lo, hi, title) in zip(axes, (("evasion_truthful_logs", "evasion_truthful_lo", "evasion_truthful_hi", "audit miss rate, truthful logs"),
                                               ("evasion_under_omission", "evasion_lo", "evasion_hi", "audit miss rate, colluders erase own records"),
                                               ("mission_success", "success_lo", "success_hi", "share of colluder tickets via fast path"))):
         x = np.arange(len(arms))
         ax.bar(x, g5[col], 0.6, yerr=[g5[col] - g5[lo], g5[hi] - g5[col]], capsize=3, color=["#9D9D9D", "#2A6F97", "#61A5C2", "#A9D6E5"][: len(arms)])
         ax.set_xticks(x)
-        ax.set_xticklabels([lab.get(a, a) for a in arms], fontsize=6)
-        ax.set_title(title, fontsize=7)
+        ax.set_xticklabels([lab.get(a, a) for a in arms], fontsize=7.5)
+        ax.set_title(title, fontsize=9)
         ax.set_ylim(0, 1.0)
         ax.grid(axis="y", alpha=0.3)
         for xi, (val, n) in enumerate(zip(g5[col], g5.n_collusive)):
