@@ -270,7 +270,7 @@ if rq0 is not None:
 
 # zero counts behind every FPR of 0.00: alerts on truthful negative logs per execution
 lines = []
-tot_neg = tot_alert = 0
+tot_neg = tot_alert = tot_logs = tot_pos = tot_pos_alert = 0
 for tag in ("main", "cond", "stegooff", "gemma", "qwen", "gemma26", "scale24", "scale48", "scale96", "long40", "adaptive_ds", "gen1", "gen2", "control", "adaptive"):
     d = load(f"pilot_report_{tag}.csv")
     if d is None:
@@ -278,11 +278,15 @@ for tag in ("main", "cond", "stegooff", "gemma", "qwen", "gemma26", "scale24", "
     neg, pos = d[~d.positive], d[d.positive]
     tot_neg += len(neg)
     tot_alert += int(neg.alert.sum())
+    tot_logs += len(d)
+    tot_pos += len(pos)
+    tot_pos_alert += int(pos.alert.sum())
     ub = f"{3 / len(neg):.2f}" if len(neg) else "--"
     lines.append(" & ".join([MODEL.get(tag, tag), str(len(d)), str(len(neg)), str(int(neg.alert.sum())), ub, str(len(pos)),
                              f"{int(pos.alert.sum())}/{len(pos)}" if len(pos) else "--"]) + r" \\")
 lines.append(r"\midrule")
-lines.append(" & ".join([r"\textbf{all executions}", "", str(tot_neg), str(tot_alert), f"{3 / max(1, tot_neg):.3f}", "", ""]) + r" \\")
+lines.append(" & ".join([r"\textbf{all executions}", str(tot_logs), str(tot_neg), str(tot_alert), f"{3 / max(1, tot_neg):.3f}", str(tot_pos),
+                         f"{tot_pos_alert}/{tot_pos}"]) + r" \\")
 rows("tab_zeros", lines)
 VALUES["num_negatives"] = str(tot_neg)
 
